@@ -16,17 +16,24 @@
 					{ "idtest": "1", "test": "Images à analyser", "exec": function () {
 						var images = [].slice.call(document.querySelectorAll('img'));
 						if (images.length > 0) {
+							var compositelinks = [];
 							var imagelinks = images.filter(function (item) {
 								var removeid = false;
 								if (!item.hasAttribute('id')) {
-									item.setAttribute('id', 'isanimagelink');
+									item.setAttribute('id', 'testimagelink');
 									removeid = true;
 								}
-								var result = document.querySelector('a > #' + item.getAttribute('id') + ':only-child');
+								var imagelink = document.querySelector('a > #' + item.getAttribute('id') + ':only-child');
+								if (!imagelink) {
+									var compositelink = document.querySelector('a #' + item.getAttribute('id'));
+									if (compositelink) {
+										compositelinks.push(compositelink);
+									}
+								}
 								if (removeid) {
 									item.removeAttribute('id');
 								}
-								return result;
+								return imagelink;
 							});
 							var images = images.filter(function (item) {
 								return imagelinks.indexOf(item) == -1;
