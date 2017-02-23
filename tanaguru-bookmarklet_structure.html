@@ -36,7 +36,7 @@
 								return imagelink;
 							});
 							var images = images.filter(function (item) {
-								return imagelinks.indexOf(item) == -1;
+								return imagelinks.indexOf(item) == -1 && compositelinks.indexOf(item) == -1;
 							});
 							var url = window.location.href;
 							var popup = window.open();
