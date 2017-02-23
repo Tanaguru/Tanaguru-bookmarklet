@@ -22,7 +22,7 @@
 									item.setAttribute('id', 'isanimagelink');
 									removeid = true;
 								}
-								var result = document.querySelector('a #' + item.getAttribute('id') + ':only-child');
+								var result = document.querySelector('a > #' + item.getAttribute('id') + ':only-child');
 								if (removeid) {
 									item.removeAttribute('id');
 								}
